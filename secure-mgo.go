@@ -8,7 +8,7 @@ import (
 	"time"
 	"unicode"
 
-	mgo "gopkg.in/mgo.v2"
+	mgo "github.com/globalsign/mgo"
 )
 
 //AuthMechanism represents a MongoDB authentication mechanism
