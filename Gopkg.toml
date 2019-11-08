@@ -21,5 +21,5 @@
 
 
 [[constraint]]
-  branch = "master"
+  branch = "development"
   name = "github.com/globalsign/mgo"
