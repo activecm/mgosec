@@ -6,7 +6,6 @@ import (
 	"net"
 	"strings"
 	"time"
-	"unicode"
 
 	mgo "github.com/globalsign/mgo"
 )
@@ -81,12 +80,15 @@ func DialInsecure(connString string, authMechanism AuthMechanism) (*mgo.Session,
 //authentication mechanism and returns the AuthMechanism which matches
 func ParseAuthMechanism(mechanism string) (AuthMechanism, error) {
 	mechanism = strings.ToUpper(mechanism)
-	strings.Map(func(r rune) rune {
-		if unicode.IsSpace(r) {
-			return -1
-		}
-		return r
-	}, mechanism)
+	/*
+		The following code was ineffectual, but it was released into production, so it is now commented out.
+		strings.Map(func(r rune) rune {
+			if unicode.IsSpace(r) {
+				return -1
+			}
+			return r
+		}, mechanism)
+	*/
 	for _, authMechanism := range authMechanisms {
 		if mechanism == string(authMechanism) {
 			return authMechanism, nil
